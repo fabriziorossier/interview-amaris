@@ -10,9 +10,14 @@ Technical Interview Project for Amaris Consulting
 - **Check if the containers are running:** docker ps -a
 - *If any container is not running, rerun* **docker compose up -d**
 
-## Accesing the project
+## Accessing the project
 - http://localhost:8080/pokemon/pokemonname
 - Replace pokemonname with the name of the pokemon you want to access
+
+## Accessing the database (to check the saved Pokemon data)
+- **From the project root folder:** docker exec -it amaris-postgres-db bash
+- **In the amaris-postgres-db container bash shell:** psql -h localhost -d developmentdatabase -U developmentuser
+- **In the developmentdatabase database:** SELECT * FROM pokemon;
 
 # Use of this software
 This software is provided solely for the technical evaluation process of Fabrizio Alexander Rossier González for Amaris Consulting and is not intended for commercial or non-commercial use without appropriate permission by the former.
