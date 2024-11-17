@@ -4,13 +4,14 @@ Technical Interview Project for Amaris Consulting
 ## Prerequisites
 - **Docker Engine - Version 27.3.1 and up:** https://docs.docker.com/engine/install/
 - **Docker Compose - Version 2.29.7 and up:** https://docs.docker.com/compose/install/
-- **Go - Version 1.23.3 and up:** https://go.dev/
 
 ## Running the project
 - **From the project root folder:** docker compose up -d
+- **Check if the containers are running:** docker ps -a
+- *If any container is not running, rerun* **docker compose up -d**
 
 ## Accesing the project
-- http://localhost:8080/pokemonname
+- http://localhost:8080/pokemon/pokemonname
 - Replace pokemonname with the name of the pokemon you want to access
 
 # Use of this software
