@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS pokemon (
+    id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    height INT NOT NULL,
+    weight INT NOT NULL,
+    base_experience INT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
