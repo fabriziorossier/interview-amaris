@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -21,7 +22,8 @@ func NewPokemonHandler(service *app.PokemonService) *PokemonHandler {
 
 func (h *PokemonHandler) GetPokemon(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	name := vars["name"]
+	inputName := vars["name"]
+	name := strings.ToLower(inputName)
 
 	log.Printf("Received request for Pokemon: %s", name)
 
