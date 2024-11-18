@@ -28,10 +28,16 @@ func (h *PokemonHandler) GetPokemon(w http.ResponseWriter, r *http.Request) {
 	// Check if the Pokemon is already in the database
 	existingPokemon, err := h.Service.FindPokemonByName(name)
 	if err == nil {
-		// Pokemon found in the database
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(fmt.Sprintf("Pokemon %s is already in the database", existingPokemon.Name)))
-		return
+		// Pokemon found in the database
+		if existingPokemon.Name != "" {
+			w.Write([]byte(fmt.Sprintf("Pokemon %s is already in the database", existingPokemon.Name)))
+			return
+		}
+		if existingPokemon.Pokemon != "" {
+			w.Write([]byte(fmt.Sprintf("Pokemon %s is already in the database", existingPokemon.Pokemon)))
+			return
+		}
 	} else if err != sql.ErrNoRows {
 		// An error occurred while querying the database
 		log.Printf("Error checking database: %v", err)

@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS pokemon (
     id INT NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
+    pokemon VARCHAR(255),
     height INT NOT NULL,
     weight INT NOT NULL,
     base_experience INT NOT NULL,
