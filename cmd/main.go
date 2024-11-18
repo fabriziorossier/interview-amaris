@@ -4,11 +4,11 @@ import (
 	"amaris/internal/app"
 	"amaris/internal/infrastructure/handler"
 	"amaris/internal/infrastructure/persistence"
+	"amaris/internal/utils"
 	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
@@ -16,9 +16,9 @@ import (
 
 func main() {
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
-		getEnv("PGUSER", "postgres"),
-		getEnv("PGPASSWORD", "postgres"),
-		getEnv("PGDATABASE", "postgres"))
+		utils.GetEnv("PGUSER", "postgres"),
+		utils.GetEnv("PGPASSWORD", "postgres"),
+		utils.GetEnv("PGDATABASE", "postgres"))
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
@@ -40,12 +40,4 @@ func main() {
 	http.Handle("/", r)
 	fmt.Println("Server is running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
-}
-
-func getEnv(key, defaultValue string) string {
-	value, exists := os.LookupEnv(key)
-	if !exists {
-		return defaultValue
-	}
-	return value
 }
